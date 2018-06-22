@@ -1,5 +1,11 @@
 from django.conf import settings
-from django.core.urlresolvers import resolve
+from django import VERSION as DJANGO_VERSION
+
+if DJANGO_VERSION < (1, 11):
+    from django.core.urlresolvers import reverse 
+else:
+    from django.urls import reverse
+
 import sys
 from six.moves import urllib
 import traceback
